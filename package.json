@@ -1,0 +1,11 @@
+{
+  "name": "lightswitch",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
