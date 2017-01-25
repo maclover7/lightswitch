@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lightswitch</title>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      //socket.emit('standby', " by the Call Booth");
+      socket.on('standby', function(msg) {
+        alert('standby has been ordered: ' + msg);
+      });
+    </script>
+  </body>
+</html>
