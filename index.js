@@ -1,9 +1,20 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser')
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+app.use(bodyParser.json());
+app.use(express.static('static'));
+
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.post('/api/qlab', function (req, res) {
+  io.of('fx').emit(req.body.type, req.body.message);
+  console.log('broadcasting in fx channel...');
+  res.send(JSON.stringify({ status: 'ok' }));
 });
 
 var users = [];
